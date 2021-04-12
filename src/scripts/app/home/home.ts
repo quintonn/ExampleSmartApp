@@ -54,7 +54,7 @@ class HomeComponentController implements ng.IOnInit {
   loadHospitals(): void {
     const self: HomeComponentController = this;
 
-    fetch('https://18.222.191.253:29996/facilities').then((resp) => {
+    fetch(appConstants.qmsServerUrl).then((resp) => {
       if (!resp.ok) {
         throw new Error(resp.statusText);
       }
@@ -73,7 +73,7 @@ class HomeComponentController implements ng.IOnInit {
     const clientId = this.selectedHospital.clientId;
     const scope = this.selectedHospital.scope;
 
-    const launchUrl = `https://quintonn.github.io/ExampleSmartApp/smartApp/launch-patient.html?clientId=${clientId}&iss=${iss}&scope=${scope}`;
+    const launchUrl = `${appConstants.launchUrl}?clientId=${clientId}&iss=${iss}&scope=${scope}`;
 
     // check to see if this is running as a mobile app or web page
     if (typeof cordova != 'undefined' && cordova && cordova.InAppBrowser) {

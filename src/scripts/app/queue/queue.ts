@@ -42,7 +42,7 @@ class QueueComponentController implements ng.IOnInit {
   }
 
   loadPatientQueueMessage(self: QueueComponentController, smart: any): void {
-    const url = `https://18.222.191.253:29996/qms?patientId=${smart.patient.id}`;
+    const url = `${appConstants.qmsURL}?patientId=${smart.patient.id}`;
 
     fetch(url).then((resp) => {
       if (!resp.ok) {
