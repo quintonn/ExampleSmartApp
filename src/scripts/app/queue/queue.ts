@@ -22,20 +22,7 @@ class QueueComponentController implements ng.IOnInit {
   ) {}
 
   back(): void {
-    //this.$location.path("/").search({});
-    window.location.href =
-      window.location.protocol +
-      '//' +
-      window.location.host +
-      '/' +
-      window.location.pathname;
-  }
-
-  test(): void {
-    cordova.InAppBrowser.open('mycallapp://test', '_system');
-    setTimeout(function () {
-      window.location.href = 'mycallapp://test';
-    }, 3000);
+    window.location.href = `${window.location.protocol}//${window.location.host}/${window.location.pathname}`;
   }
 
   $onInit(): void {
@@ -61,9 +48,9 @@ class QueueComponentController implements ng.IOnInit {
 
     self.patientId = smart.server.serviceUrl + '/Patient/' + smart.patient.id;
 
-    fetch(
-      'https://18.222.191.253:29996/qms?patientId=' + smart.patient.id
-    ).then((resp) => {
+    const url = `https://18.222.191.253:29996/qms?patientId=${smart.patient.id}`;
+
+    fetch(url).then((resp) => {
       if (!resp.ok) {
         self.queueMessage = 'Error: ' + resp.statusText;
         self.$scope.$apply();
