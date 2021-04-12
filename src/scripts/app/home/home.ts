@@ -54,7 +54,7 @@ class HomeComponentController implements ng.IOnInit {
   loadHospitals(): void {
     const self: HomeComponentController = this;
 
-    fetch(appConstants.qmsServerUrl).then((resp) => {
+    fetch(appConstants.facilitiesUrl).then((resp) => {
       if (!resp.ok) {
         throw new Error(resp.statusText);
       }
