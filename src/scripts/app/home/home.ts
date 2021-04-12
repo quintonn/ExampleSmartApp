@@ -88,7 +88,7 @@ class HomeComponentController implements ng.IOnInit {
 
     if (typeof cordova != 'undefined' && cordova && cordova.InAppBrowser) {
       const url =
-        'https://quintonn.github.io/SmartTutorialForMobile/example-smart-app/launch-patient.html?clientId=' +
+        'https://quintonn.github.io/ExampleSmartApp/smartApp/launch-patient.html?clientId=' +
         clientId +
         '&iss=' +
         iss +
@@ -151,7 +151,7 @@ class HomeComponentController implements ng.IOnInit {
       });
     } else {
       let url =
-        'https://quintonn.github.io/SmartTutorialForMobile/example-smart-app-web/launch-patient.html?clientId=' +
+        'https://quintonn.github.io/ExampleSmartApp/smartApp/launch-patient.html?clientId=' +
         clientId +
         '&iss=' +
         iss +

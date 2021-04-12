@@ -13,7 +13,7 @@
 
   setTimeout(function () {
     window.location.href =
-      'https://quintonn.github.io/SmartTutorialForMobile/qms/index.html' +
+      'https://quintonn.github.io/ExampleSmartApp/webApp/index.html' +
       window.location.search +
       '&sessionstate=' +
       btoa(sessionState) +
