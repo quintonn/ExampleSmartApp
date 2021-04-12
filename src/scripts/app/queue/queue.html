@@ -1,18 +1,28 @@
-<div class="flex flex-col justify-center m-auto w-full absolute text-center h-full">
-    <div class="text-2xl mx-auto mb-4 p-2 absolute top-2 w-full text-center font-bold">
-        <div>Lyniate Queue Management System</div>
-        <div>Patient: {{$ctrl.patientName}}</div>
-        <div>MRN: {{$ctrl.patientMRN}}</div>
-        <div class="text-sm">ID: {{$ctrl.patientId}}</div>
-    </div>
+<div
+  class="flex flex-col justify-center m-auto w-full absolute text-center h-full"
+>
+  <div
+    class="text-2xl mx-auto mb-4 p-2 absolute top-2 w-full text-center font-bold"
+  >
+    <div>Lyniate Queue Management System</div>
+    <div>Patient: {{$ctrl.patientName}}</div>
+    <div>MRN: {{$ctrl.patientMRN}}</div>
+    <div class="text-sm">ID: {{$ctrl.patientId}}</div>
+  </div>
 
-    <label class="text-2xl my-2">{{$ctrl.queueMessage}}</label>
+  <p>{{$ctrl.patient}}</p>
 
-    <div class="mx-auto w-full justify-center flex flex-row absolute bottom-2">
-        <button class="rounded p-2 font-bold text-2xl bg-blue-200" 
-            ng-click="$ctrl.back()">Back</button>
-    </div>
-    <!-- <br />
+  <label class="text-2xl my-2">{{$ctrl.queueMessage}}</label>
+
+  <div class="mx-auto w-full justify-center flex flex-row absolute bottom-2">
+    <button
+      class="rounded p-2 font-bold text-2xl bg-blue-200"
+      ng-click="$ctrl.back()"
+    >
+      Back
+    </button>
+  </div>
+  <!-- <br />
     <div class="mx-auto w-full justify-center flex flex-row absolute bottom-2">
         <button class="rounded p-2 font-bold text-2xl bg-red-200" 
             ng-click="$ctrl.test()">Test</button>
