@@ -41,13 +41,7 @@ class QueueComponentController implements ng.IOnInit {
     FHIR.oauth2.ready(readyCallback, self.onError);
   }
 
-  onReady(self: QueueComponentController, smart: any): void {
-    console.log('onReady queue');
-    console.log(smart);
-    console.log('reading patient ' + smart.patient.id);
-
-    self.patientId = smart.server.serviceUrl + '/Patient/' + smart.patient.id;
-
+  loadPatientQueueMessage(self: QueueComponentController, smart: any): void {
     const url = `https://18.222.191.253:29996/qms?patientId=${smart.patient.id}`;
 
     fetch(url).then((resp) => {
@@ -61,7 +55,18 @@ class QueueComponentController implements ng.IOnInit {
         });
       }
     });
+  }
 
+  onReady(self: QueueComponentController, smart: any): void {
+    console.log('onReady queue');
+    console.log(smart);
+    console.log('reading patient ' + smart.patient.id);
+
+    self.patientId = smart.server.serviceUrl + '/Patient/' + smart.patient.id;
+
+    self.loadPatientQueueMessage(self, smart);
+
+    // use the SMART FHIR client to load the patient details from the EHR
     smart.patient.read().then((pat: any) => {
       self.patientDetails = JSON.stringify(pat);
 
@@ -90,9 +95,6 @@ class QueueComponentController implements ng.IOnInit {
         }
       }
     });
-
-    console.log('queue.ts:');
-    console.log(self.$location.absUrl());
   }
 
   onError(err: any): void {

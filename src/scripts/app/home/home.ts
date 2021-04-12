@@ -64,19 +64,6 @@ class HomeComponentController implements ng.IOnInit {
         self.$scope.$apply();
       });
     });
-
-    // setTimeout(function()
-    // {
-    //     //TODO: Load this from Rhapsody backend
-    //     // https://18.222.191.253:29996/facilities
-    //     //
-    //     self.hospitals.push({ name: 'Cerner EHR', iss: 'https://fhir-myrecord.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d' });
-    //     self.hospitals.push({ name: 'SmartHealth IT', iss: 'https://launch.smarthealthit.org/v/r4/sim/eyJrIjoiMSIsImoiOiIxIn0/fhir' });
-
-    // example patient (SmartHealth IT) -> 579423cd-3384-4e7d-bf19-295a26d27524
-
-    //     self.$scope.$apply();
-    // }, 100);
   }
 
   performLogin(): void {
@@ -86,27 +73,25 @@ class HomeComponentController implements ng.IOnInit {
     const clientId = this.selectedHospital.clientId;
     const scope = this.selectedHospital.scope;
 
+    const launchUrl = `https://quintonn.github.io/ExampleSmartApp/smartApp/launch-patient.html?clientId=${clientId}&iss=${iss}&scope=${scope}`;
+
+    // check to see if this is running as a mobile app or web page
     if (typeof cordova != 'undefined' && cordova && cordova.InAppBrowser) {
-      const url =
-        'https://quintonn.github.io/ExampleSmartApp/smartApp/launch-patient.html?clientId=' +
-        clientId +
-        '&iss=' +
-        iss +
-        '&scope=' +
-        scope;
+      // this is when we are a mobile app
       const options =
         'clearcache=yes,clearsessioncache=yes,location=no,zoom=no';
 
-      const ref = cordova.InAppBrowser.open(
-        url + '?iss=' + iss,
-        '_blank',
-        options
-      );
+      // Launch an in-app browser that essentially opens a new browser window as a pop-up.
+      // The user won't really notice they have left the app, it will feel like it's the same app.
+      const ref = cordova.InAppBrowser.open(launchUrl, '_blank', options);
 
       ref.addEventListener('error', (e: any) => {
         console.log('error: ', e);
       });
 
+      // Listen when the browser URL changes and if we detect a URL with the word 'close' in it, we can close the pop-up browser
+      // This is probably not the best solution but it's the only thing that seemed to work
+      // OAuth advices deeplinks but we could not get it working for this demo
       ref.addEventListener('loadstop', function (a: any) {
         console.log('loadStop');
         console.log(a.url);
@@ -150,14 +135,7 @@ class HomeComponentController implements ng.IOnInit {
         }
       });
     } else {
-      let url =
-        'https://quintonn.github.io/ExampleSmartApp/smartApp/launch-patient.html?clientId=' +
-        clientId +
-        '&iss=' +
-        iss +
-        '&scope=' +
-        scope;
-      window.location.href = url;
+      window.location.href = launchUrl;
     }
   }
 
