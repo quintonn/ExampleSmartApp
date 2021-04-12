@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": [ "es6", "dom" ],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "typeRoots": [ "./node_modules/@types" ],
+    "types": [
+      "webpack-env",
+      "node"
+    ]
+  },
+  "exclude": [ "node_modules", "dist", "www" ]
+}
