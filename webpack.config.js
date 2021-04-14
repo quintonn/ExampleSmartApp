@@ -1,10 +1,7 @@
 const glob = require('glob');
-//var path = require('path');
-//var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const PostCompile = require('post-compile-webpack-plugin');
-//const fs = require('fs');
 const ncp = require('ncp').ncp;
 
 module.exports = {
@@ -19,27 +16,11 @@ module.exports = {
   },
   plugins: [
     new PostCompile(() => {
-      // The following code can copy the code to another location, eg mobile app www folder
-      console.log('*********************************');
-      console.log(__dirname);
-      console.log(process.env.NODE_ENV);
       ncp(__dirname + '/www', __dirname + '/webApp', function (err) {
         if (err) {
           return console.error(err);
         }
-        console.log('done!');
       });
-      /*
-            ncp(__dirname + '/images', __dirname + "/../mobileapp/www/images", function (err)
-            {
-                if (err)
-                {
-                    return console.error(err);
-                }
-                console.log('done!');
-            });
-            */
-      console.log('*********************************');
     }),
     new WebpackBuildNotifierPlugin({
       title: 'Webpack - TwatTest',
@@ -51,8 +32,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       hash: true,
-      title: 'My Awesome application',
-      myPageHeader: 'Hello World',
+      title: 'Lyniate QMS',
+      myPageHeader: 'Lynaite QMS',
       template: './src/scripts/index.html',
       filename: '../www/index.html', //relative to root of the application
     }),
