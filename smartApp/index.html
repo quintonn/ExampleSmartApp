@@ -4,23 +4,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Example-SMART-App</title>
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./src/css/example-smart-app.css"
-    />
-    <!--
-      Temporarily disable cerner-smart-embeddable-lib
-      <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
-    -->
     <!-- FHIR Client JS Library -->
     <script src="./lib/js/fhir-client-v0.1.12.js?v=4"></script>
   </head>
   <body>
     <h1>Redirecting...</h1>
-
-    <!-- <script src="src/js/main.js?v=20"></script> -->
     <script>
       (function (window) {
         var state = '';
@@ -34,7 +22,7 @@
         }
 
         var sessionState = sessionStorage[state];
-
+        // redirect back to main app
         setTimeout(function () {
           window.location.href =
             'https://quintonn.github.io/ExampleSmartApp/webApp/index.html' +

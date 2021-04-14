@@ -8,10 +8,6 @@
       type="text/css"
       href="./src/css/example-smart-app.css"
     />
-    <!--
-      Temporarily disable cerner-smart-embeddable-lib
-      <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
-    -->
     <title>Lyniate Example SMART App</title>
   </head>
   <body>
@@ -23,15 +19,11 @@
     <script src="./lib/js/fhir-client-cerner-additions-1.0.0.js"></script>
     <script>
       var queryString = window.location.search;
-      console.log('queryString: ');
-      console.log(queryString);
+
       var urlParams = new URLSearchParams(queryString);
-      console.log(urlParams);
+
       var clientId = urlParams.get('clientId');
       var scope = urlParams.get('scope');
-      console.log(clientId);
-
-      console.log(scope);
 
       FHIR.oauth2.authorize({
         client_id: clientId,
