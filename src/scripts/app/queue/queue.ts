@@ -35,10 +35,10 @@ class QueueComponentController implements ng.IOnInit {
 
     const readyCallback = function (smart: any) {
       console.log('inside readyCallback');
-      self.onReady(self, smart);
+      //self.onReady(self, smart);
     };
 
-    //FHIR.oauth2.ready(readyCallback, self.onError);
+    FHIR.oauth2.ready(readyCallback, self.onError);
   }
 
   loadPatientQueueMessage(self: QueueComponentController, smart: any): void {
