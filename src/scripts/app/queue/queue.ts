@@ -38,19 +38,19 @@ class QueueComponentController implements ng.IOnInit {
 
       const readyCallback = function (smart: any) {
         console.log('inside readyCallback');
-        //self.onReady(self, smart);
+        self.onReady(self, smart);
       };
 
-      function onReady(smart: any) {
-        console.log('on ready');
-        console.log(smart);
-      }
+      // function onReady(smart: any) {
+      //   console.log('on ready');
+      //   console.log(smart);
+      // }
 
-      function onError() {
-        console.log('Loading error', arguments);
-      }
+      // function onError() {
+      //   console.log('Loading error', arguments);
+      // }
 
-      FHIR.oauth2.ready(onReady, onError);
+      FHIR.oauth2.ready(readyCallback, self.onError);
 
       //FHIR.oauth2.ready(readyCallback, self.onError);
     }, 100);
@@ -62,11 +62,11 @@ class QueueComponentController implements ng.IOnInit {
     fetch(url).then((resp) => {
       if (!resp.ok) {
         self.queueMessage = 'Error: ' + resp.statusText;
-        //self.$scope.$apply();
+        self.$scope.$apply();
       } else {
         resp.text().then((text) => {
           self.queueMessage = text;
-          //self.$scope.$apply();
+          self.$scope.$apply();
         });
       }
     });
@@ -89,7 +89,7 @@ class QueueComponentController implements ng.IOnInit {
         const name = pat.name[i];
         if (name.use == 'official') {
           self.patientName = name.given + ' ' + name.family;
-          //self.$scope.$apply();
+          self.$scope.$apply();
           break;
         }
       }
@@ -104,7 +104,7 @@ class QueueComponentController implements ng.IOnInit {
           if (id.type.coding[0].code == 'MR') {
             self.patientMRN = id.value;
             console.log('setting patient mrn = ' + self.patientMRN);
-            //self.$scope.$apply();
+            self.$scope.$apply();
             break;
           }
         }
