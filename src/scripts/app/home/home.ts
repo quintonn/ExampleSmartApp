@@ -18,8 +18,8 @@ class HomeComponentController implements ng.IOnInit {
     private $location: ng.ILocationService
   ) {
     console.log('home constructor');
-    console.log('path = ' + $location.path());
-    console.log('search = ' + $location.search());
+    //console.log('path = ', $location.path());
+    //console.log('search = ', $location.search());
   }
 
   $onInit(): void {
@@ -34,7 +34,7 @@ class HomeComponentController implements ng.IOnInit {
       window.location.href.indexOf('?code') > -1 ||
       window.location.href.indexOf('?state') > -1
     ) {
-      console.log('onReady home');
+      console.log('onReady home **************************************');
       self.$location.path('/queue');
 
       // setTimeout(function () {
@@ -143,7 +143,7 @@ class HomeComponentController implements ng.IOnInit {
   }
 
   onReady(self: HomeComponentController, smart: any): void {
-    console.log('onReady home');
+    console.log('onReady home -----------------------------------');
     self.$location.path('/queue');
     self.$scope.$apply();
   }

@@ -30,8 +30,8 @@ class QueueComponentController implements ng.IOnInit {
 
     console.log('on init xxx');
 
-    console.log(self.$location);
-    console.log(window.location.search);
+    //console.log(self.$location);
+    //console.log(window.location.search);
 
     const readyCallback = function (smart: any) {
       console.log('inside readyCallback');
