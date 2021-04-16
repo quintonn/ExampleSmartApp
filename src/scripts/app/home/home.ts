@@ -26,7 +26,6 @@ class HomeComponentController implements ng.IOnInit {
     console.log('on init');
 
     const self = this;
-    this.loadHospitals();
 
     // example patient (SmartHealth IT) -> 579423cd-3384-4e7d-bf19-295a26d27524
 
@@ -51,6 +50,8 @@ class HomeComponentController implements ng.IOnInit {
       //   FHIR.oauth2.ready(onReadyCallback, self.onError);
       //   console.log('auth ready called XXX');
       // }, 100);
+    } else {
+      this.loadHospitals();
     }
   }
 
