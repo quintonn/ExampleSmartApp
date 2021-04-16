@@ -40,6 +40,15 @@ class QueueComponentController implements ng.IOnInit {
       //self.onReady(self, smart);
     };
 
+    FHIR.oauth2.ready(
+      (r: any) => {
+        console.log('on ready', r);
+      },
+      (e: any) => {
+        console.log('on error', e);
+      }
+    );
+
     //FHIR.oauth2.ready(readyCallback, self.onError);
   }
 

@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <!-- Set encoding -->
-    <meta content="utf-8" http-equiv="encoding">
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
     <!--Let browser know website is optimized for mobile-->
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
 
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+    />
 
-    <meta http-equiv="cache-control" content="only-if-cached">
-    <meta name="author" content="Quintonn">
+    <meta http-equiv="cache-control" content="only-if-cached" />
+    <meta name="author" content="Quintonn" />
 
-    <meta http-equiv="Content-Security-Policy" 
-         content="default-src * mycoolapp:; 
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * mycoolapp:; 
                   style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
-                  script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+                  script-src * 'self' 'unsafe-inline' 'unsafe-eval';"
+    />
 
-    <script type="text/javascript" src="lib/fhir-client-v0.1.12.js"></script>
     <title>Lyniate QMS</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="mainApp" class="flex h-full w-full flex-col">
-        <div ng-view class="flex-1 relative h-full">
-        </div>
+      <div ng-view class="flex-1 relative h-full"></div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="bundle.js?b164166e2e607fa61da2"></script></body>
+
+    <script type="text/javascript" src="lib/fhir-client-v0.1.12.js"></script>
+
+    <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+    <!-- https://github.com/cerner/fhir-client-cerner-additions -->
+    <script src="./lib/js/fhir-client-cerner-additions-1.0.0.js"></script>
+  <script type="text/javascript" src="bundle.js?cedcb807dc98fc55c08b"></script></body>
 </html>
