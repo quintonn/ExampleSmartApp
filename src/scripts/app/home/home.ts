@@ -36,7 +36,6 @@ class HomeComponentController implements ng.IOnInit {
     ) {
       console.log('onReady home');
       self.$location.path('/queue');
-      self.$scope.$apply();
 
       // setTimeout(function () {
       //   console.log('calling oauth.ready');
