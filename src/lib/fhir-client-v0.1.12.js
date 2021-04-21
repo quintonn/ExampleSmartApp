@@ -17403,7 +17403,7 @@ BBClient.authorize = function(params, errback){
         var combinedObject = $.extend(true, params, { 'tokenResponse' : {state: state} });
         sessionStorage[state] = JSON.stringify(combinedObject);
       }
-
+console.log('1. setting window.location.href...');
       window.location.href = client.redirect_uri + "?state="+encodeURIComponent(state);
       return;
     }
@@ -17423,7 +17423,7 @@ BBClient.authorize = function(params, errback){
     if (typeof client.launch !== 'undefined' && client.launch) {
        redirect_to += "&launch="+encodeURIComponent(client.launch);
     }
-
+    console.log('2. setting window.location.href...');
     window.location.href = redirect_to;
   }, errback);
 };

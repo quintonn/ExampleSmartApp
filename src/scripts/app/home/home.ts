@@ -35,20 +35,22 @@ class HomeComponentController implements ng.IOnInit {
     ) {
       console.log('onReady home **************************************');
 
-      setTimeout(function () {
-        console.log('calling oauth.ready');
-        console.log(window.location);
+      self.$location.path('/queue');
 
-        const onReadyCallback = function (x: any) {
-          const s = self;
-          console.log('calling self.onReady');
-          console.log(s);
-          self.onReady(s, x);
-        };
+      // setTimeout(function () {
+      //   console.log('calling oauth.ready');
+      //   console.log(window.location);
 
-        FHIR.oauth2.ready(onReadyCallback, self.onError);
-        console.log('auth ready called XXX');
-      }, 100);
+      //   const onReadyCallback = function (x: any) {
+      //     const s = self;
+      //     console.log('calling self.onReady');
+      //     console.log(s);
+      //     self.onReady(s, x);
+      //   };
+
+      //   FHIR.oauth2.ready(onReadyCallback, self.onError);
+      //   console.log('auth ready called XXX');
+      //}, 100);
     } else {
       this.loadHospitals();
     }
