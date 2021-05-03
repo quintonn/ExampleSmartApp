@@ -85,6 +85,9 @@ class QueueComponentController implements ng.IOnInit {
     smart.patient.read().then((pat: any) => {
       self.patientDetails = JSON.stringify(pat);
 
+      console.log(pat);
+      console.log(JSON.stringify(pat));
+
       for (let i = 0; i < pat.name.length; i++) {
         const name = pat.name[i];
         if (name.use == 'official') {
