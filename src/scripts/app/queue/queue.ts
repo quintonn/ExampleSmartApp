@@ -88,11 +88,12 @@ class QueueComponentController implements ng.IOnInit {
       console.log(pat);
       console.log(JSON.stringify(pat));
 
+      console.log('patient name length: ' + pat.name.length);
       for (let i = 0; i < pat.name.length; i++) {
         const name = pat.name[i];
+        console.log(name);
         if (name.use == 'official') {
-          self.patientName = name.given + ' ' + name.family;
-          self.$scope.$apply();
+          self.patientName = name.given[0] + ' ' + name.family;
           break;
         }
       }
@@ -104,14 +105,22 @@ class QueueComponentController implements ng.IOnInit {
         //if (id.use == 'usual')
         if (typeof id.type != 'undefined' && id.type != null) {
           console.log('current usual identifier = ' + id.type.coding[0].code);
-          if (id.type.coding[0].code == 'MR') {
-            self.patientMRN = id.value;
-            console.log('setting patient mrn = ' + self.patientMRN);
-            self.$scope.$apply();
+          let found = false;
+          for (let j = 0; j < id.type.coding.length; j++) {
+            if (id.type.coding[j].code == 'MR') {
+              self.patientMRN = id.value;
+              console.log('setting patient mrn = ' + self.patientMRN);
+              found = true;
+              break;
+            }
+          }
+          if (found) {
             break;
           }
         }
       }
+
+      self.$scope.$apply();
     });
   }
 
