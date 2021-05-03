@@ -1,75 +1,148 @@
-﻿<div class="flex flex-col justify-center m-auto w-full absolute text-center h-full">
-    <div class="text-2xl mx-auto mb-4 p-2 absolute top-2 w-full text-center font-bold">Lyniate Queue Management System
-    </div>
+﻿<div
+  class="flex flex-col justify-center m-auto w-full absolute text-center h-full"
+>
+  <div
+    class="text-2xl mx-auto mb-4 p-2 absolute top-2 w-full text-center font-bold"
+  >
+    Lyniate Queue Management System
+  </div>
 
-    <label class="text-2xl my-2">Select Facility</label>
+  <label class="text-2xl my-2">Select Facility</label>
 
-    <div class="mx-auto border border-gray-300 rounded p-2 text-center">
-        <select placeholder="select item" class="" ng-model="$ctrl.selectedHospital"
-            ng-options="option.name for option in $ctrl.hospitals track by option.name">
-        </select>
-    </div>
-    <label class="text-xs my-2">Selected: {{$ctrl.selectedHospital.name}}</label>
+  <div class="mx-auto border border-gray-300 rounded p-2 text-center">
+    <select
+      placeholder="select item"
+      class=""
+      ng-model="$ctrl.selectedHospital"
+      ng-options="option.name for option in $ctrl.hospitals track by option.name"
+    ></select>
+  </div>
+  <!-- <label class="text-xs my-2">Selected: {{$ctrl.selectedHospital.name}}</label> -->
 
-    <div class="mx-auto w-full justify-center flex flex-row">
-        <button class="rounded p-2 font-bold text-2xl" ng-disabled="$ctrl.selectedHospital == null"
-            ng-click="$ctrl.performLogin()"
-            ng-class="{'bg-green-200': $ctrl.selectedHospital != null, 'bg-gray-200': $ctrl.selectedHospital == null}">Login</button>
-    </div>
+  <div class="mx-auto w-full justify-center flex flex-row">
+    <button
+      class="rounded p-2 font-bold text-2xl"
+      ng-disabled="$ctrl.selectedHospital == null"
+      ng-click="$ctrl.performLogin()"
+      ng-class="{'bg-green-200': $ctrl.selectedHospital != null, 'bg-gray-200': $ctrl.selectedHospital == null}"
+    >
+      Login
+    </button>
+  </div>
 
-    <div class="mb-24"></div>
+  <div class="mb-24"></div>
 
-    <div class="mx-auto w-24 h-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104.44 134.37">
-            <defs>
-                <style>
-                    .lyniate-black {
-                        fill: #24211f;
-                    }
+  <div class="mx-auto w-24 h-auto">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104.44 134.37">
+      <defs>
+        <style>
+          .lyniate-black {
+            fill: #24211f;
+          }
 
-                    .lyniate-purple {
-                        fill: #82348b;
-                    }
-                </style>
-            </defs>
-            <title>Lyniate</title>
-            <g id="header-logo" data-name="header-logo">
-                <polygon class="lyniate-black"
-                    points="0.22 119.22 0.22 134.37 10.69 134.37 10.69 132.17 2.64 132.17 2.64 119.22 0.22 119.22">
-                </polygon>
-                <polygon class="lyniate-black"
-                    points="23.59 119.22 19.26 125.34 14.93 119.22 12.16 119.22 18.03 127.51 18.03 134.37 20.41 134.37 20.41 127.44 26.28 119.22 23.59 119.22">
-                </polygon>
-                <polygon class="lyniate-black"
-                    points="41.87 119.22 41.87 130.18 33.3 119.22 31.22 119.22 31.22 134.37 33.56 134.37 33.56 123.35 42.19 134.37 44.2 134.37 44.2 119.22 41.87 119.22">
-                </polygon>
-                <rect class="lyniate-black" x="50.81" y="119.22" width="2.38" height="15.15"></rect>
-                <path class="lyniate-black"
-                    d="M66.11,122.13l2.78,6.36H63.34Zm-1.13-3-6.63,15.25h2.54l1.62-3.75h7.2l1.64,3.75h2.56l-6.63-15.25Z">
-                </path>
-                <polygon class="lyniate-black"
-                    points="75.65 119.22 75.65 121.39 80.65 121.39 80.65 134.37 83.04 134.37 83.04 121.39 88.06 121.39 88.06 119.22 75.65 119.22">
-                </polygon>
-                <polygon class="lyniate-black"
-                    points="93.37 119.22 93.37 134.37 104.44 134.37 104.44 132.17 95.75 132.17 95.75 127.37 102.6 127.37 102.6 125.17 95.75 125.17 95.75 121.39 104.17 121.39 104.17 119.22 93.37 119.22">
-                </polygon>
-                <rect class="lyniate-black" x="-5.79" y="16.77" width="49.09" height="3.97"
-                    transform="translate(-7.77 18.76) rotate(-45)"></rect>
-                <rect class="lyniate-black" x="-11.31" y="30.11" width="86.8" height="3.97"
-                    transform="translate(-13.29 32.09) rotate(-45)"></rect>
-                <rect class="lyniate-black" x="-16.83" y="43.44" width="124.51" height="3.97"
-                    transform="translate(-18.81 45.42) rotate(-45)"></rect>
-                <rect class="lyniate-purple" x="-3.6" y="56.69" width="124.55" height="3.97"
-                    transform="translate(-24.31 58.66) rotate(-44.99)"></rect>
-                <rect class="lyniate-black" x="28.59" y="70.03" width="86.85" height="3.97"
-                    transform="translate(-29.83 72.01) rotate(-45)"></rect>
-                <rect class="lyniate-black" x="60.81" y="83.37" width="49.09" height="3.97"
-                    transform="translate(-35.36 85.36) rotate(-45)"></rect>
-                <rect class="lyniate-black" x="92.78" y="96.61" width="11.64" height="3.97"
-                    transform="translate(-40.84 98.6) rotate(-45)"></rect>
-                <rect class="lyniate-black" x="-0.3" y="3.54" width="11.67" height="3.97"
-                    transform="translate(-2.29 5.53) rotate(-45)"></rect>
-            </g>
-        </svg>
-    </div>
+          .lyniate-purple {
+            fill: #82348b;
+          }
+        </style>
+      </defs>
+      <title>Lyniate</title>
+      <g id="header-logo" data-name="header-logo">
+        <polygon
+          class="lyniate-black"
+          points="0.22 119.22 0.22 134.37 10.69 134.37 10.69 132.17 2.64 132.17 2.64 119.22 0.22 119.22"
+        ></polygon>
+        <polygon
+          class="lyniate-black"
+          points="23.59 119.22 19.26 125.34 14.93 119.22 12.16 119.22 18.03 127.51 18.03 134.37 20.41 134.37 20.41 127.44 26.28 119.22 23.59 119.22"
+        ></polygon>
+        <polygon
+          class="lyniate-black"
+          points="41.87 119.22 41.87 130.18 33.3 119.22 31.22 119.22 31.22 134.37 33.56 134.37 33.56 123.35 42.19 134.37 44.2 134.37 44.2 119.22 41.87 119.22"
+        ></polygon>
+        <rect
+          class="lyniate-black"
+          x="50.81"
+          y="119.22"
+          width="2.38"
+          height="15.15"
+        ></rect>
+        <path
+          class="lyniate-black"
+          d="M66.11,122.13l2.78,6.36H63.34Zm-1.13-3-6.63,15.25h2.54l1.62-3.75h7.2l1.64,3.75h2.56l-6.63-15.25Z"
+        ></path>
+        <polygon
+          class="lyniate-black"
+          points="75.65 119.22 75.65 121.39 80.65 121.39 80.65 134.37 83.04 134.37 83.04 121.39 88.06 121.39 88.06 119.22 75.65 119.22"
+        ></polygon>
+        <polygon
+          class="lyniate-black"
+          points="93.37 119.22 93.37 134.37 104.44 134.37 104.44 132.17 95.75 132.17 95.75 127.37 102.6 127.37 102.6 125.17 95.75 125.17 95.75 121.39 104.17 121.39 104.17 119.22 93.37 119.22"
+        ></polygon>
+        <rect
+          class="lyniate-black"
+          x="-5.79"
+          y="16.77"
+          width="49.09"
+          height="3.97"
+          transform="translate(-7.77 18.76) rotate(-45)"
+        ></rect>
+        <rect
+          class="lyniate-black"
+          x="-11.31"
+          y="30.11"
+          width="86.8"
+          height="3.97"
+          transform="translate(-13.29 32.09) rotate(-45)"
+        ></rect>
+        <rect
+          class="lyniate-black"
+          x="-16.83"
+          y="43.44"
+          width="124.51"
+          height="3.97"
+          transform="translate(-18.81 45.42) rotate(-45)"
+        ></rect>
+        <rect
+          class="lyniate-purple"
+          x="-3.6"
+          y="56.69"
+          width="124.55"
+          height="3.97"
+          transform="translate(-24.31 58.66) rotate(-44.99)"
+        ></rect>
+        <rect
+          class="lyniate-black"
+          x="28.59"
+          y="70.03"
+          width="86.85"
+          height="3.97"
+          transform="translate(-29.83 72.01) rotate(-45)"
+        ></rect>
+        <rect
+          class="lyniate-black"
+          x="60.81"
+          y="83.37"
+          width="49.09"
+          height="3.97"
+          transform="translate(-35.36 85.36) rotate(-45)"
+        ></rect>
+        <rect
+          class="lyniate-black"
+          x="92.78"
+          y="96.61"
+          width="11.64"
+          height="3.97"
+          transform="translate(-40.84 98.6) rotate(-45)"
+        ></rect>
+        <rect
+          class="lyniate-black"
+          x="-0.3"
+          y="3.54"
+          width="11.67"
+          height="3.97"
+          transform="translate(-2.29 5.53) rotate(-45)"
+        ></rect>
+      </g>
+    </svg>
+  </div>
 </div>

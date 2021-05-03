@@ -16,15 +16,9 @@ class HomeComponentController implements ng.IOnInit {
   constructor(
     public $scope: ng.IScope,
     private $location: ng.ILocationService
-  ) {
-    console.log('home constructor');
-    //console.log('path = ', $location.path());
-    //console.log('search = ', $location.search());
-  }
+  ) {}
 
   $onInit(): void {
-    console.log('on init');
-
     const self = this;
 
     // example patient (SmartHealth IT) -> 579423cd-3384-4e7d-bf19-295a26d27524
@@ -33,24 +27,7 @@ class HomeComponentController implements ng.IOnInit {
       window.location.href.indexOf('?code') > -1 ||
       window.location.href.indexOf('?state') > -1
     ) {
-      console.log('onReady home **************************************');
-
       self.$location.path('/queue');
-
-      // setTimeout(function () {
-      //   console.log('calling oauth.ready');
-      //   console.log(window.location);
-
-      //   const onReadyCallback = function (x: any) {
-      //     const s = self;
-      //     console.log('calling self.onReady');
-      //     console.log(s);
-      //     self.onReady(s, x);
-      //   };
-
-      //   FHIR.oauth2.ready(onReadyCallback, self.onError);
-      //   console.log('auth ready called XXX');
-      //}, 100);
     } else {
       this.loadHospitals();
     }
@@ -64,7 +41,6 @@ class HomeComponentController implements ng.IOnInit {
         throw new Error(resp.statusText);
       }
       resp.json().then((json) => {
-        console.log(json);
         self.hospitals = json;
         self.$scope.$apply();
       });
@@ -98,13 +74,8 @@ class HomeComponentController implements ng.IOnInit {
       // This is probably not the best solution but it's the only thing that seemed to work
       // OAuth advices deeplinks but we could not get it working for this demo
       ref.addEventListener('loadstop', function (a: any) {
-        console.log('loadStop');
-        console.log(a.url);
         if (a.url.indexOf('close') > -1) {
           var tmp = a.url.split('?')[1];
-          console.log(tmp);
-
-          console.log('---------------------------------------');
           var params = tmp.split('&');
           var code = '';
           var state = '';
@@ -115,7 +86,7 @@ class HomeComponentController implements ng.IOnInit {
             var parts = params[i].split('=');
             var name = parts[0];
             var value = parts[1];
-            console.log(name + ' = ' + value);
+
             if (name == 'code') {
               code = value;
             }
@@ -123,14 +94,10 @@ class HomeComponentController implements ng.IOnInit {
               state = value;
             }
             if (name == 'sessionstate') {
-              console.log('got session state');
               sessionState = value;
             }
             query = query + name + '=' + value + '&';
           }
-          console.log('---------------------------------------');
-          console.log(sessionState);
-          console.log(atob(sessionState));
 
           sessionStorage[state] = atob(sessionState);
 
@@ -145,7 +112,6 @@ class HomeComponentController implements ng.IOnInit {
   }
 
   onReady(self: HomeComponentController, smart: any): void {
-    console.log('onReady home -----------------------------------');
     self.$location.path('/queue');
     self.$scope.$apply();
   }

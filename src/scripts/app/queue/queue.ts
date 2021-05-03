@@ -19,9 +19,7 @@ class QueueComponentController implements ng.IOnInit {
   constructor(
     private $scope: ng.IScope,
     private $location: ng.ILocationService
-  ) {
-    console.log('queue ctor');
-  }
+  ) {}
 
   back(): void {
     window.location.href = `${window.location.protocol}//${window.location.host}/${window.location.pathname}`;
@@ -31,28 +29,11 @@ class QueueComponentController implements ng.IOnInit {
     const self = this;
 
     setTimeout(() => {
-      console.log('on init xxx');
-
-      //console.log(self.$location);
-      //console.log(window.location.search);
-
       const readyCallback = function (smart: any) {
-        console.log('inside readyCallback');
         self.onReady(self, smart);
       };
 
-      // function onReady(smart: any) {
-      //   console.log('on ready');
-      //   console.log(smart);
-      // }
-
-      // function onError() {
-      //   console.log('Loading error', arguments);
-      // }
-
       FHIR.oauth2.ready(readyCallback, self.onError);
-
-      //FHIR.oauth2.ready(readyCallback, self.onError);
     }, 100);
   }
 
@@ -73,10 +54,6 @@ class QueueComponentController implements ng.IOnInit {
   }
 
   onReady(self: QueueComponentController, smart: any): void {
-    console.log('onReady queue');
-    console.log(smart);
-    console.log('reading patient ' + smart.patient.id);
-
     self.patientId = smart.server.serviceUrl + '/Patient/' + smart.patient.id;
 
     self.loadPatientQueueMessage(self, smart);
@@ -85,31 +62,23 @@ class QueueComponentController implements ng.IOnInit {
     smart.patient.read().then((pat: any) => {
       self.patientDetails = JSON.stringify(pat);
 
-      console.log(pat);
-      console.log(JSON.stringify(pat));
-
-      console.log('patient name length: ' + pat.name.length);
       for (let i = 0; i < pat.name.length; i++) {
         const name = pat.name[i];
-        console.log(name);
+
         if (name.use == 'official') {
           self.patientName = name.given[0] + ' ' + name.family;
           break;
         }
       }
 
-      console.log('looking for MR (usual) identifier');
-
       for (let i = 0; i < pat.identifier.length; i++) {
         const id = pat.identifier[i];
         //if (id.use == 'usual')
         if (typeof id.type != 'undefined' && id.type != null) {
-          console.log('current usual identifier = ' + id.type.coding[0].code);
           let found = false;
           for (let j = 0; j < id.type.coding.length; j++) {
             if (id.type.coding[j].code == 'MR') {
               self.patientMRN = id.value;
-              console.log('setting patient mrn = ' + self.patientMRN);
               found = true;
               break;
             }
